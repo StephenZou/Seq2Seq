@@ -5,8 +5,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 sys.path.append(BASE_DIR)
 import tensorflow as tf
 import argparse
-from seq2seq_tf2.train_eval_test import train, test, evaluate
-from utils.data_utils import get_result_filename
+from Seq2Seq.train_eval_test import train, test, evaluate
+from Seq2Seq.utils.data_utils import get_result_filename
 # from utils.log_utils import define_logger
 import pathlib
 
@@ -30,10 +30,10 @@ def main():
                         help="beam size for beam search decoding (must be equal to batch size in decode mode)",
                         type=int)
     parser.add_argument("--vocab_size", default=30000, help="Vocabulary size", type=int)
-    parser.add_argument("--embed_size", default=, help="Words embeddings dimension", type=int)
-    parser.add_argument("--enc_units", default=, help="Encoder GRU cell units number", type=int)
-    parser.add_argument("--dec_units", default=, help="Decoder GRU cell units number", type=int)
-    parser.add_argument("--attn_units", default=,
+    parser.add_argument("--embed_size", default=256, help="Words embeddings dimension", type=int)
+    parser.add_argument("--enc_units", default=50, help="Encoder GRU cell units number", type=int)
+    parser.add_argument("--dec_units", default=50, help="Decoder GRU cell units number", type=int)
+    parser.add_argument("--attn_units", default=50,
                         help="[context vector, decoder state, decoder input] feedforward result dimension - "
                              "this result is used to compute the attention weights", type=int)
     parser.add_argument("--learning_rate", default=0.001, help="Learning rate", type=float)
